@@ -48,7 +48,8 @@ const ScrollableChat = ({ messages }) => {
                 maxWidth: "75%",
               }}
             >
-              {isSameSender(messages, m, i, user._id) && (
+              {(isSameSender(messages, m, i, user._id) ||
+                isLastMessage(messages, i, user._id)) && (
                 <p key={m._id} style={{ color: "grey", fontSize: "10px" }}>
                   {m.sender.name}
                 </p>
