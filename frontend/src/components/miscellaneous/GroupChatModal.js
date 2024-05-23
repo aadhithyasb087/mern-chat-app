@@ -101,7 +101,8 @@ const GroupChatModal = ({ children }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setPicGroup(data.url.toString());
+          const secureUrl = data.secure_url;
+          setPicGroup(secureUrl);
           setPicLoadingGroup(false);
         })
         .catch((err) => {
@@ -154,8 +155,8 @@ const GroupChatModal = ({ children }) => {
       );
       setChats([data, ...chats]);
       onClose();
-      setSearchResult([])
-      setSelectedUsers([])
+      setSearchResult([]);
+      setSelectedUsers([]);
       toast({
         title: "New Group Chat Created!",
         status: "success",
