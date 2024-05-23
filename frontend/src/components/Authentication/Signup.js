@@ -105,7 +105,8 @@ const Signup = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setPic(data.url.toString());
+          const secureUrl = data.secure_url;
+          setPic(secureUrl);
           setPicLoading(false);
         })
         .catch((err) => {
