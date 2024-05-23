@@ -3,7 +3,7 @@ import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getSender } from "../config/ChatLogics";
+import { getSender, getSenderPic } from "../config/ChatLogics";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
 import { Button } from "@chakra-ui/react";
@@ -105,7 +105,11 @@ const MyChats = ({ fetchAgain }) => {
                   size="sm"
                   cursor="pointer"
                   // name={user.name}
-                  src={!chat.isGroupChat ? chat.users[0].pic : chat.pic}
+                  src={
+                    !chat.isGroupChat
+                      ? getSenderPic(loggedUser, chat.users)
+                      : chat.pic
+                  }
                   mr={4}
                 />
 
